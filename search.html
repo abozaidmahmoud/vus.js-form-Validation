@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<meta charset="UTF-8">
+	   <script
+		src="https://code.jquery.com/jquery-3.3.1.min.js"
+		integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+		crossorigin="anonymous"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://unpkg.com/vue"></script>
+
+
+	</head>
+<body>
+		<div id="app">
+			<div class="container">
+				<div class="form-groub col-lg-6">
+					<input type="test" v-model="text" class="form-control">
+				</div>
+
+				<div class="form-groub col-lg-6">
+					<button class="btn btn-success" v-on:click="show(text)">show</button>
+				</div>
+
+				<div class="form-groub col-lg-6">
+					<ul>
+						<div v-if="search==true ">
+							<li  v-if="user.name==value || user.email==value" v-for="user in lists">
+								<h4 >{{user.name}}</h4>
+							</li>
+
+						</div>
+
+						<div v-else-if="search==false">
+							<li  v-for="user in lists">
+								<h4 >{{user.name}}</h4>
+							</li>
+						</div>
+
+					</ul>
+				</div>
+			</div>
+
+		</div>
+
+<script>
+		new Vue({
+			el: '#app',
+			data: {
+				text:'',
+				value:'',
+				search:false,
+				lists:[
+					{name:'aya',email:'aya@mail.com'},
+					{name:'mahmoud',email:'mahmoud@mail.com'},
+					{name:'aboziad',email:'aboziad@mail.com'},
+				]
+			},
+			methods:{
+				show:function (val) {
+					this.value=val;
+					this.search=true;
+				}
+			},
+			computed:{
+			}
+		})
+
+
+	</script>
+
+	</body>
+
+</html>
